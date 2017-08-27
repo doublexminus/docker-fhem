@@ -1,14 +1,14 @@
-FROM debian:jessie
+FROM doublexminus/xx-ubuntu16.04
 
-MAINTAINER michaelatdocker <michael.kunzmann@gmail.com>
+MAINTAINER doublexminus <samson@vgraevenitz.de>
 
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update
-RUN apt-get -y --force-yes install wget apt-transport-https
+RUN apt-get -y install wget apt-transport-https
 
 # Install perl packages
-RUN apt-get -y --force-yes install libalgorithm-merge-perl \
+RUN apt-get -y install libalgorithm-merge-perl \
 libclass-isa-perl \
 libcommon-sense-perl \
 libdpkg-perl \
@@ -25,15 +25,18 @@ libswitch-perl \
 libsys-hostname-long-perl \
 libterm-readkey-perl \
 libterm-readline-perl-perl \
-libxml-simple-perl
+libxml-simple-perl \
+libwww-perl \
+libsoap-lite-perl \
+libjson-xs-perl \
+libnet-telnet-perl
+
 
 RUN wget -qO - https://debian.fhem.de/archive.key | apt-key add -
-RUN echo "deb https://debian.fhem.de/stable ./" | tee -a /etc/apt/sources.list.d/fhem.list
+RUN echo "deb https://debian.fhem.de/nightly ./" | tee -a /etc/apt/sources.list.d/fhem.list
 RUN apt-get update
-RUN apt-get -y --force-yes install supervisor fhem telnet
+RUN apt-get -y install supervisor fhem telnet
 RUN mkdir -p /var/log/supervisor
-
-RUN echo Europe/Berlin > /etc/timezone && dpkg-reconfigure tzdata
 
 COPY ./etc/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 

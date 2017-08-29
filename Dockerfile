@@ -29,7 +29,9 @@ libxml-simple-perl \
 libwww-perl \
 libsoap-lite-perl \
 libjson-xs-perl \
-libnet-telnet-perl
+libnet-telnet-perl \
+iputils-ping
+
 
 
 RUN wget -qO - https://debian.fhem.de/archive.key | apt-key add -

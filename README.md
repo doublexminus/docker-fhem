@@ -26,7 +26,8 @@ When using the container with the external directory on a Synology Diskstation m
 directory has read/write permission for everyone.
 
 ## Special Plugins
-### To use the HOMBOT-Plugin, you will need to create the following file
+### LG HOMBOT
+To use the HOMBOT-Plugin, you will need to create the following file
 ```
 /opt/fhem/known-hosts
 ```

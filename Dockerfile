@@ -30,7 +30,8 @@ libwww-perl \
 libsoap-lite-perl \
 libjson-xs-perl \
 libnet-telnet-perl \
-iputils-ping
+iputils-ping \
+ssh
 
 
 

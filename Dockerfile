@@ -31,7 +31,8 @@ libsoap-lite-perl \
 libjson-xs-perl \
 libnet-telnet-perl \
 iputils-ping \
-ssh
+ssh \
+sshpass
 
 
 

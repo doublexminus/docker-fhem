@@ -24,3 +24,9 @@ docker run -d \
 
 When using the container with the external directory on a Synology Diskstation make sure the
 directory has read/write permission for everyone.
+
+## Special Plugins
+### To use the HOMBOT-Plugin, you will need to create the following file
+```
+/opt/fhem/known-hosts
+```

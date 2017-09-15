@@ -38,6 +38,7 @@ directory has read/write permission for everyone.
 ## Special Plugins
 ### LG HOMBOT
 Usage: https://fhem.de/commandref.html#HOMBOT
+
 To use the HOMBOT-Plugin, you will need to create the following file
 ```
 /opt/fhem/known-hosts
@@ -47,7 +48,7 @@ Start docker-container with additional Port-Mapping 67 to 6767 so there is no ne
 ```
            -p 67:6767
 ```
-Usage within FHEM (relace 00:00:00:00:00:00 aswell as 00-00-00-00-00-00 with the MAC-Address of the DashButton):
+Usage within FHEM (replace 00:00:00:00:00:00 aswell as 00-00-00-00-00-00 with the MAC-Address of the DashButton):
 ```
 define DashButton dash_dhcp
 attr DashButton allowed 00:00:00:00:00:00

@@ -41,3 +41,18 @@ To use the HOMBOT-Plugin, you will need to create the following file
 ```
 /opt/fhem/known-hosts
 ```
+### dash_dhcp (Amazon DashButtons)
+Start docker-container with additional Port-Mapping 67 to 6767
+```
+           -p 67:6767
+```
+Usage within FHEM (relace 00:00:00:00:00:00 aswell as 00-00-00-00-00-00 with the MAC-Address of the DashButton):
+```
+define DashButton dash_dhcp
+attr DashButton allowed 00:00:00:00:00:00
+attr DashButton port 6767
+attr DashButton room dashbutton
+
+define n_DashButton1 notify DashButton:00-00-00-00-00-00..short IF ([DeinFhemGeraet] eq "on") (set DeinFhemGeraet off) ELSE (set DeinFhemGeraet on)
+```
+

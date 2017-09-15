@@ -37,12 +37,13 @@ directory has read/write permission for everyone.
 
 ## Special Plugins
 ### LG HOMBOT
+Usage: https://fhem.de/commandref.html#HOMBOT
 To use the HOMBOT-Plugin, you will need to create the following file
 ```
 /opt/fhem/known-hosts
 ```
 ### dash_dhcp (Amazon DashButtons)
-Start docker-container with additional Port-Mapping 67 to 6767
+Start docker-container with additional Port-Mapping 67 to 6767 so there is no need to handle the IP-Routes with iptables
 ```
            -p 67:6767
 ```

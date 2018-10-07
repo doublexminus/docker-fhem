@@ -30,6 +30,7 @@ libwww-perl \
 libsoap-lite-perl \
 libjson-xs-perl \
 libnet-telnet-perl \
+libhtml-tableextract-perl \
 iputils-ping \
 ssh \
 sshpass

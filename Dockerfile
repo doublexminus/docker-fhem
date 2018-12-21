@@ -33,7 +33,7 @@ RUN apk add perl-json
 VOLUME /opt/fhem
 
 EXPOSE 8083
-EXPOSE 6767
+EXPOSE 6767/udp
 
 ADD startfhem.sh /usr/local/bin/startfhem.sh
 RUN chmod a+x /usr/local/bin/startfhem.sh

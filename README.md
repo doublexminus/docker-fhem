@@ -46,7 +46,7 @@ To use the HOMBOT-Plugin, you will need to create the following file
 ### dash_dhcp (Amazon DashButtons)
 Start docker-container with additional Port-Mapping 67 to 6767 so there is no need to handle the IP-Routes with iptables
 ```
-           -p 67:6767
+           -p 67:6767/udp
 ```
 Usage within FHEM (replace 00:00:00:00:00:00 aswell as 00-00-00-00-00-00 with the MAC-Address of the DashButton):
 ```

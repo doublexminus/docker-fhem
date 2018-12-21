@@ -29,8 +29,7 @@ RUN cpan install Log::Log4perl \
 					INC
 
 RUN apk add perl-json
-					
-					
+						
 VOLUME /opt/fhem
 
 EXPOSE 8083

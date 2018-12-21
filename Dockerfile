@@ -16,7 +16,6 @@ RUN apk add --update perl-device-serialport \
 
 RUN mkdir -p /opt/fhem
 
-USER root	
 RUN cpan install Log::Log4perl \
 					Net::MQTT:Simple \
 					Net::MQTT:Constants \
@@ -27,7 +26,8 @@ RUN cpan install Log::Log4perl \
 					INC
 
 RUN apk add perl-json
-						
+					
+					
 VOLUME /opt/fhem
 
 EXPOSE 8083
@@ -39,5 +39,3 @@ RUN chmod a+x /usr/local/bin/startfhem.sh
 WORKDIR /opt/fhem
 
 ENTRYPOINT ["/usr/local/bin/startfhem.sh"]
-
-

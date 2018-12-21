@@ -16,8 +16,7 @@ RUN apk add --update perl-device-serialport \
 
 RUN mkdir -p /opt/fhem && \
 	addgroup fhem && \
-	adduser -D -G fhem -h /opt/fhem -u 1000 fhem \
-	adduser fhem dialout
+	adduser -D -G fhem -h /opt/fhem -u 1000 fhem
 
 USER root	
 RUN cpan install Log::Log4perl \
@@ -39,6 +38,10 @@ EXPOSE 6767
 
 ADD startfhem.sh /usr/local/bin/startfhem.sh
 RUN chmod a+x /usr/local/bin/startfhem.sh
+
+RUN chmod o+rw /dev/ttyUSB0
+RUN chmod o+rw /dev/ttyUSB1
+RUN chmod o+rw /dev/ttyUSB2
 
 WORKDIR /opt/fhem
 

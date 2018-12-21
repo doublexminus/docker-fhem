@@ -14,9 +14,7 @@ RUN apk add --update perl-device-serialport \
 					 sshpass \
     && rm -rf /var/cache/apk/*
 
-RUN mkdir -p /opt/fhem && \
-	addgroup fhem && \
-	adduser -D -G fhem -h /opt/fhem -u 1000 fhem
+RUN mkdir -p /opt/fhem
 
 USER root	
 RUN cpan install Log::Log4perl \
@@ -39,8 +37,6 @@ ADD startfhem.sh /usr/local/bin/startfhem.sh
 RUN chmod a+x /usr/local/bin/startfhem.sh
 
 WORKDIR /opt/fhem
-
-USER fhem
 
 ENTRYPOINT ["/usr/local/bin/startfhem.sh"]
 

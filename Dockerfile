@@ -17,6 +17,7 @@ RUN apk add --update perl-device-serialport \
 RUN mkdir -p /opt/fhem && \
 	addgroup fhem && \
 	adduser -D -G fhem -h /opt/fhem -u 1000 fhem
+	adduser fhem dialout
 
 USER root	
 RUN cpan install Log::Log4perl \

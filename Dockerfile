@@ -1,51 +1,48 @@
-FROM doublexminus/xx-ubuntu16.04
+FROM alpine:latest
 
 MAINTAINER doublexminus <samson@vgraevenitz.de>
 
-ENV DEBIAN_FRONTEND noninteractive
+RUN apk add --update perl-device-serialport \
+                     perl-io-socket-ssl \
+                     perl-libwww \
+                     perl-xml-simple \
+					 perl-utils \
+					 yaml \
+					 make \
+					 gcc \
+					 openssh-client \
+					 sshpass \
+    && rm -rf /var/cache/apk/*
 
-RUN apt-get update
-RUN apt-get -y install wget apt-transport-https
+RUN mkdir -p /opt/fhem && \
+	addgroup fhem && \
+	adduser -D -G fhem -h /opt/fhem -u 1000 fhem
 
-# Install perl packages
-RUN apt-get -y install libalgorithm-merge-perl \
-libclass-isa-perl \
-libcommon-sense-perl \
-libdpkg-perl \
-liberror-perl \
-libfile-copy-recursive-perl \
-libfile-fcntllock-perl \
-libio-socket-ip-perl \
-libio-socket-multicast-perl \
-libjson-perl \
-libjson-xs-perl \
-libmail-sendmail-perl \
-libsocket-perl \
-libswitch-perl \
-libsys-hostname-long-perl \
-libterm-readkey-perl \
-libterm-readline-perl-perl \
-libxml-simple-perl \
-libwww-perl \
-libsoap-lite-perl \
-libjson-xs-perl \
-libnet-telnet-perl \
-libhtml-tableextract-perl \
-iputils-ping \
-ssh \
-sshpass
+USER root	
+RUN cpan install Log::Log4perl \
+					Net::MQTT:Simple \
+					Net::MQTT:Constants \
+					HTML::TableExtract \
+					Soap::Lite \
+					Date::Parse \
+					Net::Telnet \
+					INC
 
+RUN apk add perl-json
+					
+					
+VOLUME /opt/fhem
 
-
-RUN wget -qO - https://debian.fhem.de/archive.key | apt-key add -
-RUN echo "deb https://debian.fhem.de/nightly ./" | tee -a /etc/apt/sources.list.d/fhem.list
-RUN apt-get update
-RUN apt-get -y install supervisor fhem telnet
-RUN mkdir -p /var/log/supervisor
-
-COPY ./etc/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
-VOLUME ["/opt/fhem"]
 EXPOSE 8083
+EXPOSE 6767
 
-CMD ["/usr/bin/supervisord"]
+ADD startfhem.sh /usr/local/bin/startfhem.sh
+RUN chmod a+x /usr/local/bin/startfhem.sh
+
+WORKDIR /opt/fhem
+
+USER fhem
+
+ENTRYPOINT ["/usr/local/bin/startfhem.sh"]
+
+

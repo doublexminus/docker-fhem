@@ -26,7 +26,8 @@ RUN cpan install Log::Log4perl \
 					INC
 
 RUN apk add perl-json
-					
+			
+RUN apk add --no-cache -X http://dl-4.alpinelinux.org/alpine/edge/testing perl-soap-lite
 					
 VOLUME /opt/fhem
 

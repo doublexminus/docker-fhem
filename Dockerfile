@@ -38,10 +38,6 @@ EXPOSE 6767
 ADD startfhem.sh /usr/local/bin/startfhem.sh
 RUN chmod a+x /usr/local/bin/startfhem.sh
 
-RUN chmod o+rw /dev/ttyUSB0
-RUN chmod o+rw /dev/ttyUSB1
-RUN chmod o+rw /dev/ttyUSB2
-
 WORKDIR /opt/fhem
 
 USER fhem

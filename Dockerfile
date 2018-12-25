@@ -12,8 +12,13 @@ RUN apk add --update perl-device-serialport \
 					 gcc \
 					 openssh-client \
 					 sshpass \
+					 musl-dev \
+					 perl-dev \
+					 perl-json \
     && rm -rf /var/cache/apk/*
 
+RUN apk add --no-cache -X http://dl-4.alpinelinux.org/alpine/edge/testing perl-soap-lite	
+	
 RUN mkdir -p /opt/fhem
 
 RUN cpan install Log::Log4perl \
@@ -23,11 +28,11 @@ RUN cpan install Log::Log4perl \
 					Soap::Lite \
 					Date::Parse \
 					Net::Telnet \
-					INC
-
-RUN apk add perl-json
-			
-RUN apk add --no-cache -X http://dl-4.alpinelinux.org/alpine/edge/testing perl-soap-lite
+					INC \
+					LWP::Protocol::https \
+					Crypt::Cipher::AES \
+					Mozilla::CA \
+					Crypt::CBC
 					
 VOLUME /opt/fhem
 

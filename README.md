@@ -1,3 +1,5 @@
+# NOTE: Moved to Gitlab.com https://gitlab.com/dxm_docker/xx-fhem.git
+
 # Docker Container for FHEM
 
 Docker image for FHEM based on Alpine-Linux

@@ -1,8 +1,6 @@
-Image forked from mkunzmann/docker-fhem
-
 # Docker Container for FHEM
 
-Docker image for FHEM based on Debian Jessie
+Docker image for FHEM based on Alpine-Linux
 
 Run Directly:
 
